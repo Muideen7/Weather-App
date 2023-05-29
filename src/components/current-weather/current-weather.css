@@ -1,48 +1,69 @@
-import React from "react";
-import "./current-weather.css";
+.weather {
+  width: 300px;
+  border-radius: 6px;
+  box-shadow: 10px -2px 20px 2px rgb(0 0 0 / 30%);
+  color: #fff;
+  background-color: #333;
+  margin: 20px auto 0 auto;
+  padding: 0 20px 20px 20px;
+}
 
-const CurrentWeather = ({ data }) => {
-  return (
-    <div className="weather">
-      <div className="top">
-        <div>
-          <p className="city">{data.city}</p>
-          <p className="weather-description">{data.weather[0].description}</p>
-        </div>
-        <img
-          alt="weather"
-          className="weather-icon"
-          src={`icons/${data.weather[0].icon}.png`}
-        />
-      </div>
-      <div className="bottom">
-        <p className="temperature">{Math.round(data.main.temp)}°C</p>
-        <div className="details">
-          <div className="parameter-row">
-            <span className="parameter-label">Details</span>
-          </div>
-          <div className="parameter-row">
-            <span className="parameter-label">Feels like</span>
-            <span className="parameter-value">
-              {Math.round(data.main.feels_like)}°C
-            </span>
-          </div>
-          <div className="parameter-row">
-            <span className="parameter-label">Wind</span>
-            <span className="parameter-value">{data.wind.speed} m/s</span>
-          </div>
-          <div className="parameter-row">
-            <span className="parameter-label">Humidity</span>
-            <span className="parameter-value">{data.main.humidity}%</span>
-          </div>
-          <div className="parameter-row">
-            <span className="parameter-label">Pressure</span>
-            <span className="parameter-value">{data.main.pressure} hPa</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+.top,
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-export default CurrentWeather;
+.city {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.weather-description {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1;
+  margin: 0;
+}
+
+.weather-icon {
+  width: 100px;
+}
+
+.temperature {
+  font-weight: 600;
+  font-size: 70px;
+  width: auto;
+  letter-spacing: -5px;
+  margin: 10px 0;
+}
+
+.details {
+  width: 100%;
+  padding-left: 20px;
+}
+
+.parameter-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.parameter-label {
+  text-align: left;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.parameter-value {
+  text-align: right;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.parameter-label.top {
+  border-bottom: 1px solid #fff;
+}
