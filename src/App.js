@@ -1,3 +1,4 @@
+process.env.NODE_OPTIONS = "--openssl-legacy-provider";
 import React, { useState, useEffect } from 'react';
 import Search from "./components/search/search";
 import CurrentWeather from "./components/current-weather/current-weather";
