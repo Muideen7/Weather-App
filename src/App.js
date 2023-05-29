@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Search from "./components/search/search";
+import CurrentWeather from "./components/current-weather/current-weather";
+import Forecast from "./components/forecast/forecast";
+import { WEATHER_API_URL, WEATHER_API_KEY } from "./api";
 import axios from 'axios';
 
 const App = () => {
