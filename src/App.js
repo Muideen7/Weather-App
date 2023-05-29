@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const App = () => {
   const [weatherData, setWeatherData] = useState(null);
-  const API_KEY = 'your-api-key'; // Replace with your actual API key
+  const WEATHER_API_KEY = "6200fa753e0c0dfad812f704ad34b53a"; // Replace with your actual API key
 
   useEffect(() => {
     // Fetch weather data
