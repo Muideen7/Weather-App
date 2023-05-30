@@ -1,28 +1,46 @@
-process.env.NODE_OPTIONS = "--openssl-legacy-provider";
 import React, { useState, useEffect } from 'react';
-import Search from "./components/search/search";
-import CurrentWeather from "./components/current-weather/current-weather";
-import Forecast from "./components/forecast/forecast";
-import { WEATHER_API_URL, WEATHER_API_KEY } from "./api";
 import axios from 'axios';
+import { WEATHER_API_KEY } from "./api";
 
 const App = () => {
   const [weatherData, setWeatherData] = useState(null);
-  const WEATHER_API_KEY = "6200fa753e0c0dfad812f704ad34b53a"; // Replace with your actual API key
+  const [location, setLocation] = useState(null);
 
   useEffect(() => {
+    // Fetch user's location
+    const fetchUserLocation = async () => {
+      try {
+        navigator.geolocation.getCurrentPosition(
+          position => {
+            const { latitude, longitude } = position.coords;
+            setLocation(`${latitude},${longitude}`);
+          },
+          error => {
+            console.log(error.message);
+            setLocation('default-location'); // Set a default location in case of error
+          }
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUserLocation();
+
     // Fetch weather data
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=your-location`);
+        const response = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${location}`);
         setWeatherData(response.data);
       } catch (error) {
         console.log(error);
       }
     };
 
-    fetchData();
-  }, []);
+    if (location) {
+      fetchData();
+    }
+  }, [location]);
 
   return (
     <div>
@@ -32,12 +50,13 @@ const App = () => {
           <p>Temperature: {weatherData.current.temp_c}°C</p>
           <p>Condition: {weatherData.current.condition.text}</p>
         </div>
-      ) : (
+      ) : location ? (
         <p>Loading weather data...</p>
+      ) : (
+        <p>Fetching location...</p>
       )}
     </div>
   );
 };
 
 export default App;
-
