@@ -1,0 +1,11 @@
+.current-weather-card {
+  background-color: #f0f0f0;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.current-weather-card h2 {
+  margin-bottom: 8px;
+}
+
