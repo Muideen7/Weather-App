@@ -4,6 +4,7 @@ import CurrentWeather from './components/current-weather/CurrentWeather';
 import Forecast from './components/forecast/Forecast';
 import Search from './components/search/Search';
 import { WEATHER_API_KEY } from './api';
+import "./App.css";
 
 const App = () => {
   const [weatherData, setWeatherData] = useState(null);
