@@ -1,0 +1,3 @@
+export const OPENWEATHER_API_KEY = 6200fa753e0c0dfad812f704ad34b53aw;
+
+export const GEODB_API_KEY = a12a030438msh1badaae85621a90p162105jsn9125aeb8a4f2;

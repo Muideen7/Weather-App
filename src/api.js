@@ -1,12 +1,12 @@
-export const geoApiOptions = {
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Key": "Your_geodb_api",
-    "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
-  },
-};
+import { OPENWEATHER_API_KEY, GEODB_API_KEY } from './config';
 
-export const GEO_API_URL = "https://wft-geo-db.p.rapidapi.com/v1/geo";
+// Use the OpenWeather API key in your code
+const openWeatherApiKey = OPENWEATHER_API_KEY;
 
-export const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5";
-export const WEATHER_API_KEY = "Your_Open_Weather_api":
+// Use the GeoDB API key in your code
+const geoDbApiKey = GEODB_API_KEY;
+
+// ...
+// Use the API keys to make API requests
+// ...
+
