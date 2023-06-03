@@ -4,12 +4,14 @@ import axios from 'axios';
 import CurrentWeather from './components/current-weather/CurrentWeather';
 import Forecast from './components/forecast/Forecast';
 import Search from './components/search/Search';
-import { WEATHER_API_KEY } from './api';
-import "./App.css";
+import { WEATHER_API_URL } from './api';
+import "./app.css";
 
 const App = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [location, setLocation] = useState(null);
+  const rapidApiKey = process.env.GEODB_API_KEY;
+  const weatherApiKey = process.env.OPENWEATHER_API_KEY;
 
   useEffect(() => {
     // Fetch user's location
@@ -17,7 +19,7 @@ const App = () => {
       try {
         const response = await axios.get(
           "https://wft-geo-db.p.rapidapi.com/v1/geo/ip",
-          { headers: { "X-RapidAPI-Key": "YOUR_RAPIDAPI_KEY" } }
+          { headers: { "X-RapidAPI-Key": rapidApiKey } }
         );
         setLocation(`${response.data.latitude},${response.data.longitude}`);
       } catch (error) {
@@ -32,7 +34,7 @@ const App = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${WEATHER_API_URL}/weather?lat=${location.latitude}&lon=${location.longitude}&appid=${WEATHER_API_KEY}`
+          `${WEATHER_API_URL}/weather?lat=${location.split(",")[0]}&lon=${location.split(",")[1]}&appid=${weatherApiKey}`
         );
         setWeatherData(response.data);
       } catch (error) {
@@ -63,4 +65,3 @@ const App = () => {
 };
 
 export default App;
-
