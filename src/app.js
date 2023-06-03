@@ -1,9 +1,9 @@
 require('dotenv').config();
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import CurrentWeather from './src/components/current-weather/CurrentWeather';
-import Forecast from './src/components/forecast/Forecast';
-import Search from './src/components/search/Search';
+import CurrentWeather from './components/current-weather/CurrentWeather';
+import Forecast from './components/forecast/Forecast';
+import Search from './components/search/Search';
 import { WEATHER_API_URL } from './api';
 import "./app.css";
 
